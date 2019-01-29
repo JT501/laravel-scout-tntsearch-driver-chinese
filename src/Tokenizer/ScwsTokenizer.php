@@ -27,7 +27,7 @@ class ScwsTokenizer extends Tokenizer
         return $this->scws;
     }
 
-    public function tokenize($text)
+    public function tokenize($text, $stopword = [])
     {
         $text = mb_strtolower($text); // Set all english words to lower case
         $text = trim(preg_replace('/\s+/', ' ', $text)); // Replace new lines into space

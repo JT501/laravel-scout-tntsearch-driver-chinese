@@ -2,6 +2,7 @@
 
 namespace Hallelujahbaby\Scout\Console;
 
+use Hallelujahbaby\Scout\Tokenizer\ScwsTokenizer;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Events\Dispatcher;
 use TeamTNT\TNTSearch\TNTSearch;
@@ -39,6 +40,7 @@ class ImportCommand extends Command
         $config = config('scout.tntsearch') + config("database.connections.$driver");
 
         $tnt->loadConfig($config);
+        $tnt->setTokenizer(new ScwsTokenizer(config('scout.tntsearch.scws'), config('scout.tntsearch.stopwords')));
         $tnt->setDatabaseHandle(app('db')->connection($driver)->getPdo());
 
         $indexer = $tnt->createIndex($model->searchableAs().'.index');
