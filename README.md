@@ -18,8 +18,6 @@ composer require hallelujahbaby/laravel-scout-tntsearch-driver-chinese
 ],
 ```
 
-在 `.env` 文件中添加 `SCOUT_DRIVER=tntsearch`
-
 然後就可以將 `scout.php` 配置文件發佈到 `config` 目錄。
 
 ```bash
