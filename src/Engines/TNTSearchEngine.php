@@ -44,6 +44,12 @@ class TNTSearchEngine extends Engine
         $this->initIndex($models->first());
         $this->tnt->selectIndex("{$models->first()->searchableAs()}.index");
         $index = $this->tnt->getIndex();
+        $index->setTokenizer($this->tnt->tokenizer);
+
+        if (isset($this->tnt->config['stopWords'])) {
+            $index->setStopWords($this->tnt->config['stopWords']);
+        }
+
         $index->setPrimaryKey($models->first()->getKeyName());
 
         $index->indexBeginTransaction();

@@ -23,7 +23,7 @@ return [
                 'duality' => false,
             ],
         ],
-        'stopwords' => [
+        'stopWords' => [
             'a',
             'as',
             'the',

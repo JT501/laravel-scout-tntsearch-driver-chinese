@@ -24,7 +24,7 @@ class TNTSearchScoutServiceProvider extends ServiceProvider
             $config = config('scout.tntsearch') + config("database.connections.{$driver}");
 
             $tnt->loadConfig($config);
-            $tnt->setTokenizer(new ScwsTokenizer(config('scout.tntsearch.tokenizer.scws'), config('scout.tntsearch.stopwords')));
+            $tnt->setTokenizer(new ScwsTokenizer(config('scout.tntsearch.tokenizer.scws')));
             $tnt->setDatabaseHandle(app('db')->connection()->getPdo());
 
             $this->setFuzziness($tnt);

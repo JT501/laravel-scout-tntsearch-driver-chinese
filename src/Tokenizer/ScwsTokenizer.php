@@ -16,10 +16,9 @@ class ScwsTokenizer extends Tokenizer
     protected $scws;
     protected $stopwords;
 
-    public function __construct(array $config = [], array $stopwords = [])
+    public function __construct(array $config = [])
     {
         $this->scws = new Scws($config);
-        $this->stopwords = $stopwords;
     }
 
     public function getScws()
@@ -27,7 +26,7 @@ class ScwsTokenizer extends Tokenizer
         return $this->scws;
     }
 
-    public function tokenize($text, $stopword = [])
+    public function tokenize($text, $stopWords = [])
     {
         $text = mb_strtolower($text); // Set all english words to lower case
         $text = trim(preg_replace('/\s+/', ' ', $text)); // Replace new lines into space
@@ -38,6 +37,6 @@ class ScwsTokenizer extends Tokenizer
             $tokens = array_merge($tokens, array_column($result, 'word'));
         }
 
-        return array_diff($tokens,$this->stopwords);
+        return array_diff($tokens,$stopWords);
     }
 }

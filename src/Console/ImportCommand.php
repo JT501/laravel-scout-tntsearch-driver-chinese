@@ -40,11 +40,15 @@ class ImportCommand extends Command
         $config = config('scout.tntsearch') + config("database.connections.$driver");
 
         $tnt->loadConfig($config);
-        $tnt->setTokenizer(new ScwsTokenizer(config('scout.tntsearch.tokenizer.scws'), config('scout.tntsearch.stopwords')));
+        $tnt->setTokenizer(new ScwsTokenizer(config('scout.tntsearch.tokenizer.scws')));
         $tnt->setDatabaseHandle(app('db')->connection($driver)->getPdo());
 
         $indexer = $tnt->createIndex($model->searchableAs().'.index');
         $indexer->setPrimaryKey($model->getKeyName());
+        $indexer->setTokenizer($tnt->tokenizer);
+        if (isset($tnt->config['stopWords'])) {
+            $indexer->setStopWords($tnt->config['stopWords']);
+        }
 
         $availableColumns = \Schema::getColumnListing($model->getTable());
         $desiredColumns = array_keys($model->toSearchableArray());
