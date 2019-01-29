@@ -1,4 +1,5 @@
 # Laravel Scout TNTSearch 驅動包 (支援SCWS中文分詞) - Laravel 5.3/5.4/5.5/5.6/5.7
+原版： https://github.com/teamtnt/laravel-scout-tntsearch-driver
 
 ## 安裝
 
@@ -16,6 +17,10 @@ composer require hallelujahbaby/laravel-scout-tntsearch-driver-chinese
     Laravel\Scout\ScoutServiceProvider::class,
     TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
 ],
+```
+在 `.env` 文件中添加 
+```bash
+SCOUT_DRIVER=tntsearch
 ```
 
 然後就可以將 `scout.php` 配置文件發佈到 `config` 目錄。
