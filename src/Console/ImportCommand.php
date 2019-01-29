@@ -40,7 +40,7 @@ class ImportCommand extends Command
         $config = config('scout.tntsearch') + config("database.connections.$driver");
 
         $tnt->loadConfig($config);
-        $tnt->setTokenizer(new ScwsTokenizer(config('scout.tntsearch.scws'), config('scout.tntsearch.stopwords')));
+        $tnt->setTokenizer(new ScwsTokenizer(config('scout.tntsearch.tokenizer.scws'), config('scout.tntsearch.stopwords')));
         $tnt->setDatabaseHandle(app('db')->connection($driver)->getPdo());
 
         $indexer = $tnt->createIndex($model->searchableAs().'.index');
