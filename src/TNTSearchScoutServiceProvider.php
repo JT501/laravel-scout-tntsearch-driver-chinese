@@ -1,5 +1,6 @@
 <?php namespace TeamTNT\Scout;
 
+use TeamTNT\Scout\Tokenizer\ScwsTokenizer;
 use TeamTNT\TNTSearch\TNTSearch;
 use Laravel\Scout\EngineManager;
 use Laravel\Scout\Builder;
@@ -23,6 +24,7 @@ class TNTSearchScoutServiceProvider extends ServiceProvider
             $config = config('scout.tntsearch') + config("database.connections.{$driver}");
 
             $tnt->loadConfig($config);
+            $tnt->setTokenizer(new ScwsTokenizer($config('scout.tntsearch.tokenizer')));
             $tnt->setDatabaseHandle(app('db')->connection()->getPdo());
             
             $this->setFuzziness($tnt);
