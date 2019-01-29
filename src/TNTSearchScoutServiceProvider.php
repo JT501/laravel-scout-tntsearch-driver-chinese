@@ -1,12 +1,12 @@
 <?php namespace Hallelujahbaby\Scout;
 
-use TeamTNT\Scout\Tokenizer\ScwsTokenizer;
+use Hallelujahbaby\Scout\Tokenizer\ScwsTokenizer;
 use TeamTNT\TNTSearch\TNTSearch;
 use Laravel\Scout\EngineManager;
 use Laravel\Scout\Builder;
 use Illuminate\Support\ServiceProvider;
-use TeamTNT\Scout\Console\ImportCommand;
-use TeamTNT\Scout\Engines\TNTSearchEngine;
+use Hallelujahbaby\Scout\Console\ImportCommand;
+use Hallelujahbaby\Scout\Engines\TNTSearchEngine;
 
 class TNTSearchScoutServiceProvider extends ServiceProvider
 {

@@ -6,7 +6,7 @@
  * Time: 4:17 PM
  */
 
-namespace TeamTNT\Scout\Tokenizer;
+namespace Hallelujahbaby\Scout\Tokenizer;
 
 use Latrell\Scws\Scws;
 use TeamTNT\TNTSearch\Support\Tokenizer;

@@ -1,6 +1,6 @@
 <?php
 
-namespace TeamTNT\Scout\Console;
+namespace Hallelujahbaby\Scout\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Events\Dispatcher;
