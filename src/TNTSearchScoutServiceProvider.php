@@ -1,4 +1,4 @@
-<?php namespace TeamTNT\Scout;
+<?php namespace Hallelujahbaby\Scout;
 
 use TeamTNT\Scout\Tokenizer\ScwsTokenizer;
 use TeamTNT\TNTSearch\TNTSearch;
@@ -19,14 +19,14 @@ class TNTSearchScoutServiceProvider extends ServiceProvider
     {
         $this->app[EngineManager::class]->extend('tntsearch', function ($app) {
             $tnt = new TNTSearch();
-            
+
             $driver = config('database.default');
             $config = config('scout.tntsearch') + config("database.connections.{$driver}");
 
             $tnt->loadConfig($config);
-            $tnt->setTokenizer(new ScwsTokenizer($config('scout.tntsearch.tokenizer')));
+            $tnt->setTokenizer(new ScwsTokenizer(config('scout.tntsearch.tokenizer'), config('scout.tntsearch.stopwords')));
             $tnt->setDatabaseHandle(app('db')->connection()->getPdo());
-            
+
             $this->setFuzziness($tnt);
             $this->setAsYouType($tnt);
 
@@ -39,7 +39,7 @@ class TNTSearchScoutServiceProvider extends ServiceProvider
             ]);
         }
 
-        Builder::macro('constrain', function($constraints) {
+        Builder::macro('constrain', function ($constraints) {
             $this->constraints = $constraints;
             return $this;
         });
@@ -47,9 +47,9 @@ class TNTSearchScoutServiceProvider extends ServiceProvider
 
     protected function setFuzziness($tnt)
     {
-        $tnt->fuzziness            = config('scout.tntsearch.fuzziness', $tnt->fuzziness);
-        $tnt->fuzzy_distance       = config('scout.tntsearch.fuzzy.distance', $tnt->fuzzy_distance);
-        $tnt->fuzzy_prefix_length  = config('scout.tntsearch.fuzzy.prefix_length', $tnt->fuzzy_prefix_length);
+        $tnt->fuzziness = config('scout.tntsearch.fuzziness', $tnt->fuzziness);
+        $tnt->fuzzy_distance = config('scout.tntsearch.fuzzy.distance', $tnt->fuzzy_distance);
+        $tnt->fuzzy_prefix_length = config('scout.tntsearch.fuzzy.prefix_length', $tnt->fuzzy_prefix_length);
         $tnt->fuzzy_max_expansions = config('scout.tntsearch.fuzzy.max_expansions', $tnt->fuzzy_max_expansions);
     }
 

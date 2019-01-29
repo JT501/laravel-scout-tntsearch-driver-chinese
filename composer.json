@@ -1,7 +1,7 @@
 {
-    "name": "teamtnt/laravel-scout-tntsearch-driver",
-    "description": "Driver for Laravel Scout search package based on https://github.com/teamtnt/tntsearch",
-    "keywords": ["tntsearch", "search", "scout", "laravel"],
+    "name": "hallelujahbaby/laravel-scout-tntsearch-driver-chinese",
+    "description": "配合SCWS中文分詞功能的 Laravel Scout TNTSearch 驅動包",
+    "keywords": ["tntsearch", "search", "scout", "laravel", "中文分詞", "全文搜索", "scws"],
     "license": "MIT",
     "authors": [{
         "name": "TNT Studio",
@@ -39,13 +39,14 @@
         },
         "laravel": {
             "providers": [
-                "TeamTNT\\Scout\\TNTSearchScoutServiceProvider"
+                "Hallelujahbaby\\Scout\\TNTSearchScoutServiceProvider"
             ]
         }
     },
     "suggest": {
-        "teamtnt/tntsearch": "Required to use the TNTSearch engine."
+        "teamtnt/tntsearch": "Required to use the TNTSearch engine.",
+        "hallelujahbaby/scws": "Required to use the SCWS extension"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

@@ -13,7 +13,6 @@ return [
         'asYouType' => false,
         'searchBoolean' => env('TNTSEARCH_BOOLEAN', false),
         'tokenizer' => [
-            'tokenizer' => env('TNTSEARCH_TOKENIZER', 'scws'),
             'scws' => [
                 'charset' => 'utf-8',
                 'dict' => '/usr/local/scws/etc/dict.utf8.xdb', // Path to SCWS Dictionary
@@ -24,7 +23,7 @@ return [
                 'duality' => false,
             ],
         ],
-        'stopWords' => [
+        'stopwords' => [
             'a',
             'as',
             'the',
