@@ -6,7 +6,7 @@
 通過 `composer` 安裝:
 
 ``` bash
-composer require hallelujahbaby/laravel-scout-tntsearch-driver-chinese
+composer require JT501/laravel-scout-tntsearch-driver-chinese
 ```
 
 (Laravel 5.5 以下版本) 添加服務提供者到 `config/app.php`:
@@ -117,4 +117,4 @@ Post::search('你好世界')->get();
 
 目前默認只支援 `scws` 中文分詞。需要安裝**SCWS拓展包**和**SCWS PHP 擴展**
 
-[安裝詳情](https://github.com/hallelujahbaby/SCWS)
+[安裝詳情](https://github.com/JT501/SCWS)
